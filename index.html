@@ -50,7 +50,7 @@
         * Define the ball Object
         * The Ball Object will inherit from the Shape Object
         */
-        function Ball(coordX, coordY, horizontalVelocity, verticalVelocity, size, ballColor, exists) {
+        function Ball(coordX, coordY, horizontalVelocity, verticalVelocity, size, ballColor) {
             // Call the Shape constructor to inherit its properties from it
             Shape.call(this, coordX, coordY, horizontalVelocity, verticalVelocity, size);
 
@@ -71,7 +71,7 @@
             blackBoardContext.beginPath();
             
             // Set the Fill color of the ball with the ballColor of the current ball
-            blackBoardContext.fillStyle(this.ballColor)
+            blackBoardContext.fillStyle = (this.ballColor);
 
             // Design the abstract form of the circle with the current ball datas
             blackBoardContext.arc(this.coordX, this.coordY, this.size, 0, 2*Math.PI);
@@ -80,7 +80,7 @@
             blackBoardContext.fill();
         }
 
-        
+
 
     </script>
 </body>
