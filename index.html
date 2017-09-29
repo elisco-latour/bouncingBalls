@@ -32,6 +32,21 @@
         blackBoardContext.fillStyle = 'rgba(0,0,0, .25)';
         blackBoardContext.fillRect(0, 0, blackBoardWidth, blackBoardHeight);
 
+        // Define a shape Object constructor
+        function Shape(coordX, coordY, horizontalVelocity, verticalVelocity, size) {
+            // Coordinates of the shape
+            this.coordX = coordX;
+            this.coordY = coordY;
+
+            // Define a velocity for the shape movement
+            this.horizontalVelocity = horizontalVelocity;
+            this.verticalVelocity = verticalVelocity;
+
+            //Define the size of the shape
+            this.size = size;
+        }
+
+        
     </script>
 </body>
 
