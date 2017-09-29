@@ -46,6 +46,25 @@
             this.size = size;
         }
 
+        /*
+        * Define the ball Object
+        * The Ball Object will inherit from the Shape Object
+        */
+        function Ball(coordX, coordY, horizontalVelocity, verticalVelocity, size, ballColor, exists) {
+            // Call the Shape constructor to inherit its properties from it
+            Shape.call(this, coordX, coordY, horizontalVelocity, verticalVelocity, size);
+
+            // Define a color for the ball
+            this.ballColor = ballColor;
+
+            /*
+            * Define an existance for our ball
+            * This will help us to make a ball disappear when it will be eaten by the evil circle
+            * By default, a ball exists at it creation
+            */
+            this.exists = true;
+        }
+
         
     </script>
 </body>
