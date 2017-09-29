@@ -80,6 +80,33 @@
             blackBoardContext.fill();
         }
 
+        /*
+        * Define a function that will update ball position
+        * Though make a ball moves
+        */ 
+
+        Ball.prototype.update = function() {
+            if( (this.coordX + this.size) >= blackBoardWidth ) {
+                this.horizontalVelocity = - ( this.horizontalVelocity );
+            }
+
+            if( (this.coordX + this.size) <= 0 ) {
+                this.horizontalVelocity = - ( this.horizontalVelocity );
+            }
+
+            if( (this.coordY + this.size) >= blackBoardHeight ) {
+                this.verticalVelocity = - ( this.verticalVelocity );
+            }
+
+            if( ( this.coordY + this.size ) >= 0 ){
+                this.verticalVelocity = - ( this.verticalVelocity );
+            }
+            this.coordX += this.horizontalVelocity;
+            this.coordY += this.verticalVelocity;
+        }
+
+        var oneBall = new Ball(250, 250, -7, 7, 50, 'red');
+        oneBall.drawBall();
 
 
     </script>
