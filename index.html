@@ -65,7 +65,23 @@
             this.exists = true;
         }
 
+        // Define a method that will draw our balls on the game context
+        Ball.prototype.drawBall = function() {
+            // Create a new Path
+            blackBoardContext.beginPath();
+            
+            // Set the Fill color of the ball with the ballColor of the current ball
+            blackBoardContext.fillStyle(this.ballColor)
+
+            // Design the abstract form of the circle with the current ball datas
+            blackBoardContext.arc(this.coordX, this.coordY, this.size, 0, 2*Math.PI);
+
+            // Fill the cicrcle and make it solid ans visible with the current ball color
+            blackBoardContext.fill();
+        }
+
         
+
     </script>
 </body>
 
