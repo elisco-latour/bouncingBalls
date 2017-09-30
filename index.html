@@ -160,7 +160,7 @@
             this.evilStrokeColor = evilStrokeColor;
         }
 
-
+        // Ddefine a method that draws the evil circle
         EvilCircle.prototype.drawEvil = function() {
             blackBoardContext.beginPath();
             blackBoardContext.lineWidth = 2;
@@ -169,6 +169,26 @@
             blackBoardContext.stroke();
         }
 
+        // Check the bounds to avoid the evil Circle to traverse the Window
+        EvilCircle.prototype.checkBounds = function() {
+            if( (this.coordX + this.size) >= blackBoardWidth ) {
+                this.coordX = blackBoardWidth + 2*this.horizontalVelocity;
+            }
+
+            if( (this.coordX + this.size ) <= 0 ) {
+                this.coordX = -2*this.horizontalVelocity;
+            }
+
+            if( (this.coordY + this.size ) >= blackBoardHeight ) {
+                this.coordY = blackBoardHeight - 2*this.verticalVelocity;
+            }
+
+            if( (this.coordY + this.size)  <= 0) {
+                this.coordY = 2*this.verticalVelocity;
+            }
+        }
+
+        // Define a method that allows us control the movement of our evil circle
         EvilCircle.prototype.setControls = function() {
             console.log("I'am in");
 
@@ -182,31 +202,35 @@
                 event.preventDefault();
                 // Move the Evil Cirlce Backward
                 if(event.keyCode === 37 ) {
+                    myEvilCircle.checkBounds();
                     myEvilCircle.coordX += myEvilCircle.horizontalVelocity;
                 }
 
                 // Move the Evil Circle forward
                 if(event.keyCode === 39 ) {
+                    myEvilCircle.checkBounds();
                     myEvilCircle.coordX -= myEvilCircle.horizontalVelocity;
                 }
 
                 // Move the Evil Circle UpWard
                 if(event.keyCode === 38 ) {
+                    myEvilCircle.checkBounds();
                     myEvilCircle.coordY -= myEvilCircle.verticalVelocity;
                 }
 
                 // Move the Evil Circle downWard
                 if(event.keyCode === 40 ) {
+                    myEvilCircle.checkBounds();
                     myEvilCircle.coordY += myEvilCircle.verticalVelocity;
                 }
             }
         }
 
-
+        // Create an evilCircle Object
         var evilCircle = new EvilCircle(250, 250, -20, 20, 10, '#fff');
         evilCircle.setControls();
 
-
+        // A default number of balls to draw
         var defaultNumber = 25;
 
         // Define a loop to create our balls bouncing in the game scene
