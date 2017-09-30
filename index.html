@@ -230,13 +230,14 @@
         // Make the  Evil circle eats balls when they collide with it
         EvilCircle.prototype.evilDetectCollision = function() {
             for( var k = 0 ; k < balls.length ; k++ ) {
-                if( balls[j].exists ) {
-                    let distanceEvilBallX = this.coordX - balls[k].coordY;
+                if( balls[k].exists ) {
+                    let distanceEvilBallX = this.coordX - balls[k].coordX;
                     let distanceEvilBallY = this.coordY - balls[k].coordY; 
                     let distanceEvilBall = Math.sqrt(distanceEvilBallX*distanceEvilBallX + distanceEvilBallY*distanceEvilBallY);
 
                     if((distanceEvilBall - this.size) <= balls[k].size ) {
                         balls[k].exists = false;
+                        defaultNumber--;
                     }
                 }
             }
@@ -269,11 +270,15 @@
             // Draw the ball, update it, and detect if collides with another balls
             for( var j = 0 ; j < balls.length ; j++ ) {
                 evilCircle.drawEvil();
-                balls[j].drawBall();
-                balls[j].update();
-                balls[j].ballCollisionDetect();
-            }
+                evilCircle.evilDetectCollision();
 
+                if(balls[j].exists) {
+                    balls[j].drawBall();
+                    balls[j].update();
+                    balls[j].ballCollisionDetect();
+                }
+            }
+            
             // Recall the function by itself
             requestAnimationFrame(bouncingBallsLoop);
         }
