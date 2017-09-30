@@ -11,15 +11,28 @@
             padding: 0;
             overflow: hidden;
         }
+
+        .counter-container {
+            color: #fff;
+            position: absolute;
+            font-weight: bold;
+            top: 25px;
+            left: 25px;
+        }
+
     </style>
 </head>
 
 <body>
+    <div class="counter-container">Remain balls: <span id="counter"></span></div>
     <canvas id="black-board"></canvas>
 
     <script>
         // Get a reference to the canvas and store it into a variable
         var blackBoard = document.querySelector('#black-board');
+
+        // Get a reference to the counter and store it into a variable
+        var counter = document.querySelector('#counter');
 
         // Set a 2d context on the canvas
         var blackBoardContext = blackBoard.getContext('2d');
@@ -278,7 +291,9 @@
                     balls[j].ballCollisionDetect();
                 }
             }
+
             
+            counter.textContent = defaultNumber;
             // Recall the function by itself
             requestAnimationFrame(bouncingBallsLoop);
         }
