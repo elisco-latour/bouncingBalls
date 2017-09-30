@@ -169,9 +169,51 @@
             blackBoardContext.stroke();
         }
 
+        EvilCircle.prototype.setControls = function() {
+            console.log("I'am in");
+
+            var myEvilCircle = this;
+            // ArrowRight -> 39
+            // ArrowLeft -> 37
+            // ArrowUp -> 38
+            // ArrowDown -> 40
+            window.onkeydown = function(event) {
+
+                event.preventDefault();
+                // Move the Evil Cirlce Backward
+                if(event.keyCode === 37 ) {
+                    myEvilCircle.coordX -= myEvilCircle.horizontalVelocity;
+                    console.log(myEvilCircle.coordX);
+                    console.log(event.key);
+                }
+
+                // Move the Evil Circle forward
+                if(event.keyCode === 39 ) {
+                    myEvilCircle.coordX += myEvilCircle.horizontalVelocity;
+                    console.log(myEvilCircle.coordX);
+                    console.log(event.key);
+                }
+
+                // Move the Evil Circle UpWard
+                if(event.keyCode === 38 ) {
+                    myEvilCircle.coordY -= myEvilCircle.verticalVelocity;
+                    console.log(myEvilCircle.coordY);
+                    console.log(event.key);
+                }
+
+                // Move the Evil Circle downWard
+                if(event.keyCode === 40 ) {
+                    myEvilCircle.coordY += myEvilCircle.verticalVelocity;
+                    console.log(myEvilCircle.coordY)
+                    console.log(event.key);
+                }
+            }
+        }
+
+        var defaultNumber = 25;
 
         // Define a loop to create our balls bouncing in the game scene
-        function bouncinBallsLoop() {
+        function bouncingBallsLoop() {
             blackBoardContext.fillStyle = 'rgba(0,0,0, .25)';
             blackBoardContext.fillRect(0, 0, blackBoardWidth, blackBoardHeight);
             while( balls.length <= defaultNumber - 1 ) {
@@ -195,7 +237,7 @@
             }
 
             // Recall the function by itself
-            requestAnimationFrame(bouncinBallsLoop);
+            requestAnimationFrame(bouncingBallsLoop);
         }
         
     </script>
