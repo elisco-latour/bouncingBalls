@@ -32,6 +32,12 @@
         blackBoardContext.fillStyle = 'rgba(0,0,0, .25)';
         blackBoardContext.fillRect(0, 0, blackBoardWidth, blackBoardHeight);
 
+        // Define the random number generator function
+        function random(min, max) {
+            var num = Math.floor( Math.random() * (max - min + 1 ) ) + min;
+            return num;
+        }
+
         // Define a shape Object constructor
         function Shape(coordX, coordY, horizontalVelocity, verticalVelocity, size) {
             // Coordinates of the shape
