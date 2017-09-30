@@ -226,6 +226,22 @@
             }
         }
 
+
+        // Make the  Evil circle eats balls when they collide with it
+        EvilCircle.prototype.evilDetectCollision = function() {
+            for( var k = 0 ; k < balls.length ; k++ ) {
+                if( balls[j].exists ) {
+                    let distanceEvilBallX = this.coordX - balls[k].coordY;
+                    let distanceEvilBallY = this.coordY - balls[k].coordY; 
+                    let distanceEvilBall = Math.sqrt(distanceEvilBallX*distanceEvilBallX + distanceEvilBallY*distanceEvilBallY);
+
+                    if((distanceEvilBall - this.size) <= balls[k].size ) {
+                        balls[k].exists = false;
+                    }
+                }
+            }
+        }
+
         // Create an evilCircle Object
         var evilCircle = new EvilCircle(250, 250, -20, 20, 10, '#fff');
         evilCircle.setControls();
