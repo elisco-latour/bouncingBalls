@@ -161,6 +161,15 @@
         }
 
 
+        EvilCircle.prototype.drawEvil = function() {
+            blackBoardContext.beginPath();
+            blackBoardContext.lineWidth = 2;
+            blackBoardContext.strokeStyle = "#fff";
+            blackBoardContext.arc(this.coordX, this.coordY, this.size, 0, 2*Math.PI );
+            blackBoardContext.stroke();
+        }
+
+
         // Define a loop to create our balls bouncing in the game scene
         function bouncinBallsLoop() {
             blackBoardContext.fillStyle = 'rgba(0,0,0, .25)';
