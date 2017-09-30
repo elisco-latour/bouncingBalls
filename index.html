@@ -104,7 +104,7 @@
                 this.verticalVelocity = - (this.verticalVelocity);
             }
 
-            if ((this.coordY + this.size) >= 0) {
+            if ((this.coordY + this.size) <= 0) {
                 this.verticalVelocity = - (this.verticalVelocity);
             }
             this.coordX += this.horizontalVelocity;
@@ -147,6 +147,36 @@
                 }
             }
         }
+        var defaultNumber = 25;
+
+        // Define a loop to create our balls bouncing in the game scene
+        function bouncinBallsLoop() {
+            blackBoardContext.fillStyle = 'rgba(0,0,0, .25)';
+            blackBoardContext.fillRect(0, 0, blackBoardWidth, blackBoardHeight);
+            while( balls.length <= defaultNumber - 1 ) {
+                // Create a New Ball with random parameters
+                var ball = new Ball(
+                    random(0, blackBoardWidth),
+                    random(0, blackBoardHeight),
+                    random(-7, 7),
+                    random(-7, 7),
+                    random(5, 20),
+                    'rgb('+random(0, 255)+', '+random(0, 255)+', '+random(0, 255)+')'
+                );
+                balls.push(ball);
+            }
+
+            // Draw the ball, update it, and detect if collides with another balls
+            for( var j = 0 ; j < balls.length ; j++ ) {
+                balls[j].drawBall();
+                balls[j].update();
+                balls[j].ballCollisionDetect();
+            }
+
+            // Recall the function by itself
+            requestAnimationFrame(bouncinBallsLoop);
+        }
+        
     </script>
 </body>
 
