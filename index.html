@@ -147,7 +147,19 @@
                 }
             }
         }
-        var defaultNumber = 25;
+
+
+        /*
+        * Define the EvilCircle Object constructor
+        * This Object will inherit from Shape Object
+        */
+        function EvilCircle(coordX, coordY, horizontalVelocity, verticalVelocity, size, evilStrokeColor) {
+            Shape.call(this, coordX, coordY, horizontalVelocity, verticalVelocity, size);
+
+            // Set the Sroke Color of our Evil Circle
+            this.evilStrokeColor = evilStrokeColor;
+        }
+
 
         // Define a loop to create our balls bouncing in the game scene
         function bouncinBallsLoop() {
