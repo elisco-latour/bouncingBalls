@@ -182,33 +182,30 @@
                 event.preventDefault();
                 // Move the Evil Cirlce Backward
                 if(event.keyCode === 37 ) {
-                    myEvilCircle.coordX -= myEvilCircle.horizontalVelocity;
-                    console.log(myEvilCircle.coordX);
-                    console.log(event.key);
+                    myEvilCircle.coordX += myEvilCircle.horizontalVelocity;
                 }
 
                 // Move the Evil Circle forward
                 if(event.keyCode === 39 ) {
-                    myEvilCircle.coordX += myEvilCircle.horizontalVelocity;
-                    console.log(myEvilCircle.coordX);
-                    console.log(event.key);
+                    myEvilCircle.coordX -= myEvilCircle.horizontalVelocity;
                 }
 
                 // Move the Evil Circle UpWard
                 if(event.keyCode === 38 ) {
                     myEvilCircle.coordY -= myEvilCircle.verticalVelocity;
-                    console.log(myEvilCircle.coordY);
-                    console.log(event.key);
                 }
 
                 // Move the Evil Circle downWard
                 if(event.keyCode === 40 ) {
                     myEvilCircle.coordY += myEvilCircle.verticalVelocity;
-                    console.log(myEvilCircle.coordY)
-                    console.log(event.key);
                 }
             }
         }
+
+
+        var evilCircle = new EvilCircle(250, 250, -20, 20, 10, '#fff');
+        evilCircle.setControls();
+
 
         var defaultNumber = 25;
 
@@ -231,6 +228,7 @@
 
             // Draw the ball, update it, and detect if collides with another balls
             for( var j = 0 ; j < balls.length ; j++ ) {
+                evilCircle.drawEvil();
                 balls[j].drawBall();
                 balls[j].update();
                 balls[j].ballCollisionDetect();
@@ -239,6 +237,7 @@
             // Recall the function by itself
             requestAnimationFrame(bouncingBallsLoop);
         }
+        bouncingBallsLoop();
         
     </script>
 </body>
